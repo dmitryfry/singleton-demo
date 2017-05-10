@@ -1,15 +1,22 @@
 class Logger
+  def initialize
+    @f = File.open 'log.txt', 'a'
+  end
+
+  # class method
   def self.say_something
     puts 'lala'
   end
 
+  # instance method
   def self.log_something wat
-    f = File.open 'log.txt', 'a'
-    f.puts wat
-    f.close
+
+    @f.puts wat
+
   end
 end
 
 Logger.say_something
 
-Logger.log_something 'wazuup'
+logger = Logger.new
+logger.log_something 'wazuup'
